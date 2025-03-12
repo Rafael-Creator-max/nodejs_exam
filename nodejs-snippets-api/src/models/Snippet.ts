@@ -22,6 +22,13 @@ const SnippetSchema: Schema = new Schema(
   },
   { timestamps: true } // createdAt & updatedAt
 );
+SnippetSchema.index(
+  { createdAt: 1 },
+  {
+    expireAfterSeconds: 0,
+    partialFilterExpression: { expiresIn: { $ne: null } },
+  }
+);
 
 const Snippet = mongoose.model<ISnippet>("Snippet", SnippetSchema);
 
