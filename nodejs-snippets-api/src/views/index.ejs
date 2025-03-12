@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snippet Dashboard</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>📌 Code Snippets Dashboard</h1>
+
+    <form action="/" method="GET">
+        <input type="text" name="language" placeholder="Filter by language">
+        <input type="text" name="tags" placeholder="Filter by tags (comma-separated)">
+        <button type="submit">Filter</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Language</th>
+                <th>Code</th>
+                <th>Tags</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% snippets.forEach(snippet => { %>
+                <tr>
+                    <td><%= snippet.title %></td>
+                    <td><%= snippet.language %></td>
+                    <td><pre><code><%= snippet.code %></code></pre></td>
+                    <td><%= snippet.tags.join(", ") %></td>
+                    <td>
+                        <a href="/snippets/<%= snippet._id %>">View</a> |
+                        <a href="/delete/<%= snippet._id %>" onclick="return confirm('Delete this snippet?');">Delete</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+    <a href="/create">➕ Add New Snippet</a>
+</body>
+</html>
