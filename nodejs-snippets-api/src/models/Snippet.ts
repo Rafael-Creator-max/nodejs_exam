@@ -23,4 +23,6 @@ const SnippetSchema: Schema = new Schema(
   { timestamps: true } // createdAt & updatedAt
 );
 
+const Snippet = mongoose.model<ISnippet>("Snippet", SnippetSchema);
+
 export default mongoose.model<ISnippet>("Snippet", SnippetSchema);
