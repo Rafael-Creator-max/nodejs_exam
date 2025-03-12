@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
-import { connectDB } from "./config/database"; 
+import { connectDB } from "./config/database";
 import snippetRoutes from "./routes/snippets";
 import frontendRoutes from "./routes/frontendRoutes";
 
@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 5000;
 
 //  Set up EJS for views
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+app.set("views", "src/views");
 
 // Serve static files (CSS, JS)
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("src/public"));
 
 //  Middleware
 app.use(express.json());
